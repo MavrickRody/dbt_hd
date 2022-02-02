@@ -1,4 +1,4 @@
-# Architecrural layout for using dbt with snowflake
+# Architectural layout - dbt with snowflake
 ![image](https://user-images.githubusercontent.com/23280140/152135704-5300c5b8-bd4f-4200-9099-27ecc882972c.png)
 
 
