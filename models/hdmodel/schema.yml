@@ -1,0 +1,10 @@
+
+version: 2
+
+models:
+  - name: using_packaged_tests
+    description: "A tester dbt model for HD"
+    columns:
+      - name: instrument
+        tests:
+          - not_null

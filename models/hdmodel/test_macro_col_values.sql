@@ -1,0 +1,1 @@
+select {{ cents_to_dollars('Cost') }} as CostA from {{ref('using_packaged_tests')}}
