@@ -263,5 +263,51 @@ Try running the following commands:
 
 
 
+# CI & CD with dbt
+
+First of all, we need to define the git workflow for the CI & CD
+![image](https://user-images.githubusercontent.com/23280140/152223713-b49c4730-b854-48a4-8307-f0a4f4e39f6e.png)
+
+When the code is merged with the main branch a pipeline in Azure DevOps get triggered
+
+CI pipeline with the below code for publishing an artifact
+yml file needs to be addded
+
+```yml
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'dbt_prod'
+    publishLocation: 'pipeline'
+
+```
+
+# Create CD pipeline within Azure DevOps
+Once the pipeline creates an Artifact, we can create another CD pipeline with the stages which will deploy the code on different databases or schemas.
+we can use the variables in the profile file to change them with this pipelines.
+
+![image](https://user-images.githubusercontent.com/23280140/152225116-2f59c679-51d7-45cd-ab5e-4c2c105001a5.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
