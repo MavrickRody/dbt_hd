@@ -1,4 +1,4 @@
-# Architecrural layout for using dbt with snowflake
+# Architectural layout - dbt with snowflake
 ![image](https://user-images.githubusercontent.com/23280140/152135704-5300c5b8-bd4f-4200-9099-27ecc882972c.png)
 
 
@@ -130,6 +130,66 @@ execute the model
 dbt run -m using_packaged_tests
 ```
 
+# Creating Tables in Snowflake with Materialization
+Create a file in hdmodel "table_Creation"
+Paste the code 
+#### Materialization- we can create tables or views in the databases
+
+```
+{{ config(materialized='table') }}
+```
+Code
+```
+{{ config(materialized='table') }}
+with 
+unioned as (
+    {{ dbt_utils.union_relations(
+        relations=[ref('ledger'), ref('ledger_2')]
+    ) }}
+ 
+),
+ 
+renamed as (
+    select      
+        Book,
+        Date as book_date,
+        Trader,
+        Instrument, -- used for the test
+        Action as book_action,
+        Cost,
+        Currency,
+        Volume,
+        Cost_Per_Share,
+        Stock_exchange_name
+    from unioned 
+)
+ 
+select * from renamed
+
+```
+
+or the other option is to mention it on the dbt_project.yml file
+
+### table
+```
+models:
+  dbt_hd:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: table
+
+```
+### view 
+```
+models:
+  dbt_hd:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: view
+
+```
+
+
 # Testing the Models
 
 For tests, dbt comes with a set of 4 pre-defined data tests:
@@ -200,6 +260,52 @@ select {{ cents_to_dollars('Cost') }} as CostA from {{ref('using_packaged_tests'
 Try running the following commands:
 - dbt run
 - dbt test
+
+
+
+# CI & CD with dbt
+
+First of all, we need to define the git workflow for the CI & CD
+![image](https://user-images.githubusercontent.com/23280140/152223713-b49c4730-b854-48a4-8307-f0a4f4e39f6e.png)
+
+When the code is merged with the main branch a pipeline in Azure DevOps get triggered
+
+CI pipeline with the below code for publishing an artifact
+yml file needs to be addded
+
+```yml
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'dbt_prod'
+    publishLocation: 'pipeline'
+
+```
+
+# Create CD pipeline within Azure DevOps
+Once the pipeline creates an Artifact, we can create another CD pipeline with the stages which will deploy the code on different databases or schemas.
+we can use the variables in the profile file to change them with this pipelines.
+
+![image](https://user-images.githubusercontent.com/23280140/152225116-2f59c679-51d7-45cd-ab5e-4c2c105001a5.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

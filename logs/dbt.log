@@ -4067,3 +4067,281 @@ select * from renamed
 11:44:32.577713 [info ] [MainThread]: 
 11:44:32.578709 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 11:44:32.579712 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022474AA5FD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022474B35580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022474C8FD60>]}
+
+
+============================== 2022-02-02 19:21:40.799213 | 8a4839af-84af-4a75-a59b-09462c38ea74 ==============================
+19:21:40.799213 [info ] [MainThread]: Running with dbt=1.0.1
+19:21:40.800373 [debug] [MainThread]: running dbt with arguments Namespace(record_timing_info=None, debug=None, log_format=None, write_json=None, use_colors=None, printer_width=None, warn_error=None, version_check=None, partial_parse=None, single_threaded=False, use_experimental_parser=None, static_parser=None, profiles_dir='C:\\Users\\waseem.peer\\.dbt', send_anonymous_usage_stats=None, fail_fast=None, event_buffer_size=None, project_dir=None, profile=None, target=None, vars='{}', log_cache_events=False, threads=None, select=None, exclude=None, selector_name=None, state=None, defer=None, full_refresh=False, cls=<class 'dbt.task.run.RunTask'>, which='run', rpc_method='run')
+19:21:40.800373 [debug] [MainThread]: Tracking: tracking
+19:21:40.801216 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B0763F0C70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B0763F8EB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B0763F8BB0>]}
+19:21:41.377793 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+19:21:41.377793 [debug] [MainThread]: Partial parsing: added file: dbt_hd://models\hdmodel\table_creation.sql
+19:21:41.389568 [debug] [MainThread]: 1603: static parser failed on hdmodel\table_creation.sql
+19:21:41.412575 [debug] [MainThread]: 1602: parser fallback to jinja rendering on hdmodel\table_creation.sql
+19:21:41.423195 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.dbt_hd.example
+
+19:21:41.431237 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '8a4839af-84af-4a75-a59b-09462c38ea74', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B077659AF0>]}
+19:21:41.440739 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '8a4839af-84af-4a75-a59b-09462c38ea74', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B0775BFBE0>]}
+19:21:41.441244 [info ] [MainThread]: Found 3 models, 1 test, 0 snapshots, 0 analyses, 363 macros, 0 operations, 2 seed files, 0 sources, 0 exposures, 0 metrics
+19:21:41.443245 [info ] [MainThread]: 
+19:21:41.443245 [debug] [MainThread]: Acquiring new snowflake connection "master"
+19:21:41.445243 [debug] [ThreadPool]: Acquiring new snowflake connection "list_AQUILA_DEV"
+19:21:41.459834 [debug] [ThreadPool]: Using snowflake connection "list_AQUILA_DEV"
+19:21:41.459834 [debug] [ThreadPool]: On list_AQUILA_DEV: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "connection_name": "list_AQUILA_DEV"} */
+
+    show terse schemas in database AQUILA_DEV
+    limit 10000
+19:21:41.460834 [debug] [ThreadPool]: Opening a new connection, currently in state init
+19:21:46.324588 [debug] [ThreadPool]: SQL status: SUCCESS 53 in 4.86 seconds
+19:21:46.330592 [debug] [ThreadPool]: On list_AQUILA_DEV: Close
+19:21:46.551997 [debug] [ThreadPool]: Acquiring new snowflake connection "list_AQUILA_DEV_DBT_WPEER_JAFFLE_SHOP"
+19:21:46.568084 [debug] [ThreadPool]: Using snowflake connection "list_AQUILA_DEV_DBT_WPEER_JAFFLE_SHOP"
+19:21:46.568084 [debug] [ThreadPool]: On list_AQUILA_DEV_DBT_WPEER_JAFFLE_SHOP: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "connection_name": "list_AQUILA_DEV_DBT_WPEER_JAFFLE_SHOP"} */
+
+    show terse objects in AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP
+19:21:46.569062 [debug] [ThreadPool]: Opening a new connection, currently in state init
+19:21:47.453083 [debug] [ThreadPool]: SQL status: SUCCESS 8 in 0.88 seconds
+19:21:47.467359 [debug] [ThreadPool]: On list_AQUILA_DEV_DBT_WPEER_JAFFLE_SHOP: Close
+19:21:47.688182 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+19:21:47.689231 [info ] [MainThread]: 
+19:21:47.719093 [debug] [Thread-1  ]: Began running node model.dbt_hd.table_creation
+19:21:47.720020 [debug] [Thread-2  ]: Began running node model.dbt_hd.using_packaged_tests
+19:21:47.720020 [info ] [Thread-1  ]: 1 of 3 START table model DBT_WPEER_JAFFLE_SHOP.table_creation................... [RUN]
+19:21:47.721014 [info ] [Thread-2  ]: 2 of 3 START view model DBT_WPEER_JAFFLE_SHOP.using_packaged_tests.............. [RUN]
+19:21:47.723415 [debug] [Thread-1  ]: Acquiring new snowflake connection "model.dbt_hd.table_creation"
+19:21:47.724016 [debug] [Thread-2  ]: Acquiring new snowflake connection "model.dbt_hd.using_packaged_tests"
+19:21:47.724016 [debug] [Thread-1  ]: Began compiling node model.dbt_hd.table_creation
+19:21:47.724016 [debug] [Thread-2  ]: Began compiling node model.dbt_hd.using_packaged_tests
+19:21:47.725016 [debug] [Thread-1  ]: Compiling model.dbt_hd.table_creation
+19:21:47.725016 [debug] [Thread-2  ]: Compiling model.dbt_hd.using_packaged_tests
+19:21:47.748072 [debug] [Thread-1  ]: Using snowflake connection "model.dbt_hd.table_creation"
+19:21:47.754073 [debug] [Thread-2  ]: Using snowflake connection "model.dbt_hd.using_packaged_tests"
+19:21:47.754073 [debug] [Thread-1  ]: On model.dbt_hd.table_creation: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "node_id": "model.dbt_hd.table_creation"} */
+
+    describe table AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger
+19:21:47.754639 [debug] [Thread-2  ]: On model.dbt_hd.using_packaged_tests: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "node_id": "model.dbt_hd.using_packaged_tests"} */
+
+    describe table AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger
+19:21:47.754639 [debug] [Thread-1  ]: Opening a new connection, currently in state init
+19:21:47.755076 [debug] [Thread-2  ]: Opening a new connection, currently in state init
+19:21:48.528585 [debug] [Thread-1  ]: SQL status: SUCCESS 10 in 0.77 seconds
+19:21:48.593633 [debug] [Thread-1  ]: Using snowflake connection "model.dbt_hd.table_creation"
+19:21:48.594630 [debug] [Thread-1  ]: On model.dbt_hd.table_creation: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "node_id": "model.dbt_hd.table_creation"} */
+
+    describe table AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger_2
+19:21:48.638153 [debug] [Thread-2  ]: SQL status: SUCCESS 10 in 0.88 seconds
+19:21:48.639183 [debug] [Thread-2  ]: Using snowflake connection "model.dbt_hd.using_packaged_tests"
+19:21:48.639183 [debug] [Thread-2  ]: On model.dbt_hd.using_packaged_tests: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "node_id": "model.dbt_hd.using_packaged_tests"} */
+
+    describe table AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger_2
+19:21:48.770893 [debug] [Thread-1  ]: SQL status: SUCCESS 10 in 0.18 seconds
+19:21:48.794118 [debug] [Thread-1  ]: Writing injected SQL for node "model.dbt_hd.table_creation"
+19:21:48.796916 [debug] [Thread-2  ]: SQL status: SUCCESS 10 in 0.16 seconds
+19:21:48.801646 [debug] [Thread-2  ]: Writing injected SQL for node "model.dbt_hd.using_packaged_tests"
+19:21:48.805644 [debug] [Thread-1  ]: finished collecting timing info
+19:21:48.805644 [debug] [Thread-2  ]: finished collecting timing info
+19:21:48.806603 [debug] [Thread-1  ]: Began executing node model.dbt_hd.table_creation
+19:21:48.806603 [debug] [Thread-2  ]: Began executing node model.dbt_hd.using_packaged_tests
+19:21:48.830731 [debug] [Thread-1  ]: Writing runtime SQL for node "model.dbt_hd.table_creation"
+19:21:48.837167 [debug] [Thread-2  ]: Writing runtime SQL for node "model.dbt_hd.using_packaged_tests"
+19:21:48.855872 [debug] [Thread-2  ]: Using snowflake connection "model.dbt_hd.using_packaged_tests"
+19:21:48.856874 [debug] [Thread-1  ]: Using snowflake connection "model.dbt_hd.table_creation"
+19:21:48.858941 [debug] [Thread-2  ]: On model.dbt_hd.using_packaged_tests: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "node_id": "model.dbt_hd.using_packaged_tests"} */
+
+  create or replace  view AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.using_packaged_tests  as (
+    with 
+unioned as (
+    
+
+        (
+            select
+
+                cast('AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger' as 
+    varchar
+) as _dbt_source_relation,
+                
+                    cast("BOOK" as character varying(16777216)) as "BOOK" ,
+                    cast("DATE" as DATE) as "DATE" ,
+                    cast("TRADER" as character varying(16777216)) as "TRADER" ,
+                    cast("INSTRUMENT" as character varying(16777216)) as "INSTRUMENT" ,
+                    cast("ACTION" as character varying(16777216)) as "ACTION" ,
+                    cast("COST" as NUMBER(38,0)) as "COST" ,
+                    cast("CURRENCY" as character varying(16777216)) as "CURRENCY" ,
+                    cast("VOLUME" as NUMBER(38,0)) as "VOLUME" ,
+                    cast("COST_PER_SHARE" as FLOAT) as "COST_PER_SHARE" ,
+                    cast("STOCK_EXCHANGE_NAME" as character varying(16777216)) as "STOCK_EXCHANGE_NAME" 
+
+            from AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger
+        )
+
+        union all
+        
+
+        (
+            select
+
+                cast('AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger_2' as 
+    varchar
+) as _dbt_source_relation,
+                
+                    cast("BOOK" as character varying(16777216)) as "BOOK" ,
+                    cast("DATE" as DATE) as "DATE" ,
+                    cast("TRADER" as character varying(16777216)) as "TRADER" ,
+                    cast("INSTRUMENT" as character varying(16777216)) as "INSTRUMENT" ,
+                    cast("ACTION" as character varying(16777216)) as "ACTION" ,
+                    cast("COST" as NUMBER(38,0)) as "COST" ,
+                    cast("CURRENCY" as character varying(16777216)) as "CURRENCY" ,
+                    cast("VOLUME" as NUMBER(38,0)) as "VOLUME" ,
+                    cast("COST_PER_SHARE" as FLOAT) as "COST_PER_SHARE" ,
+                    cast("STOCK_EXCHANGE_NAME" as character varying(16777216)) as "STOCK_EXCHANGE_NAME" 
+
+            from AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger_2
+        )
+
+        
+ 
+),
+ 
+renamed as (
+    select      
+        Book,
+        Date as book_date,
+        Trader,
+        Instrument, -- used for the test
+        Action as book_action,
+        Cost,
+        Currency,
+        Volume,
+        Cost_Per_Share,
+        Stock_exchange_name
+    from unioned 
+)
+ 
+select * from renamed
+  );
+19:21:48.858941 [debug] [Thread-1  ]: On model.dbt_hd.table_creation: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "node_id": "model.dbt_hd.table_creation"} */
+
+
+      create or replace transient table AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.table_creation  as
+      (
+with 
+unioned as (
+    
+
+        (
+            select
+
+                cast('AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger' as 
+    varchar
+) as _dbt_source_relation,
+                
+                    cast("BOOK" as character varying(16777216)) as "BOOK" ,
+                    cast("DATE" as DATE) as "DATE" ,
+                    cast("TRADER" as character varying(16777216)) as "TRADER" ,
+                    cast("INSTRUMENT" as character varying(16777216)) as "INSTRUMENT" ,
+                    cast("ACTION" as character varying(16777216)) as "ACTION" ,
+                    cast("COST" as NUMBER(38,0)) as "COST" ,
+                    cast("CURRENCY" as character varying(16777216)) as "CURRENCY" ,
+                    cast("VOLUME" as NUMBER(38,0)) as "VOLUME" ,
+                    cast("COST_PER_SHARE" as FLOAT) as "COST_PER_SHARE" ,
+                    cast("STOCK_EXCHANGE_NAME" as character varying(16777216)) as "STOCK_EXCHANGE_NAME" 
+
+            from AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger
+        )
+
+        union all
+        
+
+        (
+            select
+
+                cast('AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger_2' as 
+    varchar
+) as _dbt_source_relation,
+                
+                    cast("BOOK" as character varying(16777216)) as "BOOK" ,
+                    cast("DATE" as DATE) as "DATE" ,
+                    cast("TRADER" as character varying(16777216)) as "TRADER" ,
+                    cast("INSTRUMENT" as character varying(16777216)) as "INSTRUMENT" ,
+                    cast("ACTION" as character varying(16777216)) as "ACTION" ,
+                    cast("COST" as NUMBER(38,0)) as "COST" ,
+                    cast("CURRENCY" as character varying(16777216)) as "CURRENCY" ,
+                    cast("VOLUME" as NUMBER(38,0)) as "VOLUME" ,
+                    cast("COST_PER_SHARE" as FLOAT) as "COST_PER_SHARE" ,
+                    cast("STOCK_EXCHANGE_NAME" as character varying(16777216)) as "STOCK_EXCHANGE_NAME" 
+
+            from AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.ledger_2
+        )
+
+        
+ 
+),
+ 
+renamed as (
+    select      
+        Book,
+        Date as book_date,
+        Trader,
+        Instrument, -- used for the test
+        Action as book_action,
+        Cost,
+        Currency,
+        Volume,
+        Cost_Per_Share,
+        Stock_exchange_name
+    from unioned 
+)
+ 
+select * from renamed
+      );
+19:21:49.356858 [debug] [Thread-2  ]: SQL status: SUCCESS 1 in 0.5 seconds
+19:21:49.369982 [debug] [Thread-2  ]: finished collecting timing info
+19:21:49.370840 [debug] [Thread-2  ]: On model.dbt_hd.using_packaged_tests: Close
+19:21:49.603435 [debug] [Thread-2  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '8a4839af-84af-4a75-a59b-09462c38ea74', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B077659160>]}
+19:21:49.604281 [info ] [Thread-2  ]: 2 of 3 OK created view model DBT_WPEER_JAFFLE_SHOP.using_packaged_tests......... [[32mSUCCESS 1[0m in 1.88s]
+19:21:49.607448 [debug] [Thread-2  ]: Finished running node model.dbt_hd.using_packaged_tests
+19:21:49.608286 [debug] [Thread-2  ]: Began running node model.dbt_hd.test_macro_col_values
+19:21:49.609289 [info ] [Thread-2  ]: 3 of 3 START view model DBT_WPEER_JAFFLE_SHOP.test_macro_col_values............. [RUN]
+19:21:49.610290 [debug] [Thread-2  ]: Acquiring new snowflake connection "model.dbt_hd.test_macro_col_values"
+19:21:49.610290 [debug] [Thread-2  ]: Began compiling node model.dbt_hd.test_macro_col_values
+19:21:49.611291 [debug] [Thread-2  ]: Compiling model.dbt_hd.test_macro_col_values
+19:21:49.617660 [debug] [Thread-2  ]: Writing injected SQL for node "model.dbt_hd.test_macro_col_values"
+19:21:49.618295 [debug] [Thread-2  ]: finished collecting timing info
+19:21:49.619294 [debug] [Thread-2  ]: Began executing node model.dbt_hd.test_macro_col_values
+19:21:49.630303 [debug] [Thread-2  ]: Writing runtime SQL for node "model.dbt_hd.test_macro_col_values"
+19:21:49.632372 [debug] [Thread-2  ]: Using snowflake connection "model.dbt_hd.test_macro_col_values"
+19:21:49.632372 [debug] [Thread-2  ]: On model.dbt_hd.test_macro_col_values: /* {"app": "dbt", "dbt_version": "1.0.1", "profile_name": "snowflake_new", "target_name": "dev", "node_id": "model.dbt_hd.test_macro_col_values"} */
+
+  create or replace  view AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.test_macro_col_values  as (
+    select 
+    (Cost / 100)::numeric(16, 2)
+ as CostA from AQUILA_DEV.DBT_WPEER_JAFFLE_SHOP.using_packaged_tests
+  );
+19:21:49.633307 [debug] [Thread-2  ]: Opening a new connection, currently in state closed
+19:21:50.243776 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 1.38 seconds
+19:21:50.255055 [debug] [Thread-1  ]: finished collecting timing info
+19:21:50.256052 [debug] [Thread-1  ]: On model.dbt_hd.table_creation: Close
+19:21:50.482952 [debug] [Thread-1  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '8a4839af-84af-4a75-a59b-09462c38ea74', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B077669190>]}
+19:21:50.483129 [info ] [Thread-1  ]: 1 of 3 OK created table model DBT_WPEER_JAFFLE_SHOP.table_creation.............. [[32mSUCCESS 1[0m in 2.76s]
+19:21:50.484960 [debug] [Thread-1  ]: Finished running node model.dbt_hd.table_creation
+19:21:50.488960 [debug] [Thread-2  ]: SQL status: SUCCESS 1 in 0.86 seconds
+19:21:50.492965 [debug] [Thread-2  ]: finished collecting timing info
+19:21:50.493566 [debug] [Thread-2  ]: On model.dbt_hd.test_macro_col_values: Close
+19:21:50.712609 [debug] [Thread-2  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '8a4839af-84af-4a75-a59b-09462c38ea74', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B077DCF970>]}
+19:21:50.714624 [info ] [Thread-2  ]: 3 of 3 OK created view model DBT_WPEER_JAFFLE_SHOP.test_macro_col_values........ [[32mSUCCESS 1[0m in 1.10s]
+19:21:50.718727 [debug] [Thread-2  ]: Finished running node model.dbt_hd.test_macro_col_values
+19:21:50.723695 [debug] [MainThread]: Acquiring new snowflake connection "master"
+19:21:50.725594 [info ] [MainThread]: 
+19:21:50.727679 [info ] [MainThread]: Finished running 2 view models, 1 table model in 9.28s.
+19:21:50.729711 [debug] [MainThread]: Connection 'master' was properly closed.
+19:21:50.730745 [debug] [MainThread]: Connection 'list_AQUILA_DEV' was properly closed.
+19:21:50.730745 [debug] [MainThread]: Connection 'list_AQUILA_DEV_DBT_WPEER_JAFFLE_SHOP' was properly closed.
+19:21:50.731741 [debug] [MainThread]: Connection 'model.dbt_hd.table_creation' was properly closed.
+19:21:50.732689 [debug] [MainThread]: Connection 'model.dbt_hd.test_macro_col_values' was properly closed.
+19:21:50.766705 [info ] [MainThread]: 
+19:21:50.770716 [info ] [MainThread]: [32mCompleted successfully[0m
+19:21:50.772711 [info ] [MainThread]: 
+19:21:50.773717 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+19:21:50.774711 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B07767CFD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B0777BCFA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B077D35CD0>]}
