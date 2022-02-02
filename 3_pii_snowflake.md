@@ -1,35 +1,6 @@
 # Identifiy PII and Restrict Users in Snowflake
 We have some ways of identifying the PII information, either we can use an external tool like a data catlog or we can write our own program in python or SQL
 
-Check which columns are ought to be masked
-Example column is **Username** in this case
-
-Code 
-```
----Check which Columns are to be masked---
-select distinct  table_catalog, table_schema , table_name,column_name 
-from "SNOWFLAKE"."ACCOUNT_USAGE"."COLUMNS" where column_name like '%Username%' 
-```
-
-## Option 3: Masking Aproach 
-
-Create a Masking Policy for ACCOUNTADMIN role who can see the PII info otherwise it is hidden from others.
-
-```
-create or replace masking policy pii_mask as (val string) returns string ->
-case when current_role() in  ('ACCOUNTADMIN') then val else sha2(val) end;
-```
-
-
-I have created a dynamic SQL to fetch the details then this SQL can be exceuted 
-
-```
-select distinct 'alter table ' || table_catalog || '.' || table_schema || '.' || table_name || ' modify column ' || column_name || ' set masking policy pii_mask ;'
-from "SNOWFLAKE"."ACCOUNT_USAGE"."COLUMNS" where column_name like '%Username%' 
-```
-
-
-
 ## Option 1: Creating Views -
 a view can be used to eliminate pieces of data from the end user.
 Columns may be eliminated by hidding them from the select and specific rows can be eliminated by implementing selective predicates.  
@@ -75,3 +46,34 @@ With secure views the user will be unable to see the view definition.
 Options Mapped  
 
 ![image](https://user-images.githubusercontent.com/23280140/152233668-96cd4824-98bb-4dad-a83a-8e6a0548740a.png)
+
+# Exmaple Use Case
+
+Check which columns are ought to be masked or have PII information
+Example column is **Username** in this case
+
+Code 
+```
+---Check which Columns are to be masked---
+select distinct  table_catalog, table_schema , table_name,column_name 
+from "SNOWFLAKE"."ACCOUNT_USAGE"."COLUMNS" where column_name like '%Username%' 
+```
+
+## Option 3: Masking Aproach 
+
+Create a Masking Policy for ACCOUNTADMIN role who can see the PII info otherwise it is hidden from others.
+
+```
+create or replace masking policy pii_mask as (val string) returns string ->
+case when current_role() in  ('ACCOUNTADMIN') then val else sha2(val) end;
+```
+
+
+I have created a dynamic SQL to fetch the details then this SQL can be exceuted 
+
+```
+select distinct 'alter table ' || table_catalog || '.' || table_schema || '.' || table_name || ' modify column ' || column_name || ' set masking policy pii_mask ;'
+from "SNOWFLAKE"."ACCOUNT_USAGE"."COLUMNS" where column_name like '%Username%' 
+```
+
+
