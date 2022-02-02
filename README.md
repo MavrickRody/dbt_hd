@@ -130,6 +130,66 @@ execute the model
 dbt run -m using_packaged_tests
 ```
 
+# Creating Tables in Snowflake with Materialization
+Create a file in hdmodel "table_Creation"
+Paste the code 
+#### Materialization- we can create tables or views in the databases
+
+```
+{{ config(materialized='table') }}
+```
+Code
+```
+{{ config(materialized='table') }}
+with 
+unioned as (
+    {{ dbt_utils.union_relations(
+        relations=[ref('ledger'), ref('ledger_2')]
+    ) }}
+ 
+),
+ 
+renamed as (
+    select      
+        Book,
+        Date as book_date,
+        Trader,
+        Instrument, -- used for the test
+        Action as book_action,
+        Cost,
+        Currency,
+        Volume,
+        Cost_Per_Share,
+        Stock_exchange_name
+    from unioned 
+)
+ 
+select * from renamed
+
+```
+
+or the other option is to mention it on the dbt_project.yml file
+
+### table
+```
+models:
+  dbt_hd:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: table
+
+```
+### view 
+```
+models:
+  dbt_hd:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: view
+
+```
+
+
 # Testing the Models
 
 For tests, dbt comes with a set of 4 pre-defined data tests:
