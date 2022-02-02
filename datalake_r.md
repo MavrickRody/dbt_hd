@@ -1,5 +1,7 @@
 # Data Lake for Cross-functional teams
 
+# Approach 1 (Main)
+
 ## We can manage this access with Access control (IAM) and role assignement in Azure
 
 ![image](https://user-images.githubusercontent.com/23280140/152230829-068c3cb4-9d18-45d1-ac29-2ac6c68ac511.png)
@@ -30,3 +32,17 @@ resource "azurerm_role_assignment" "example" {
 }
 
 ```
+
+# Shared access signature (SAS) token which is valid for certain period.
+
+![image](https://user-images.githubusercontent.com/23280140/152232071-fb03f5bb-63af-4b73-83ba-6a2477c81981.png)
+
+
+# Data lake - Access Keys
+
+Access keys authenticate the applications requests to the storage account.
+
+
+
+
+
