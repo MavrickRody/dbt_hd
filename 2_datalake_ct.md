@@ -57,3 +57,7 @@ Step 2: Creating an Azure Data Lake Database
 
 Step 3: Writing U-SQL Queries to Discover or Use Data in Azure Data Lake
 
+
+
+Reference for U-SQL and creating views and accessing data 
+https://docs.microsoft.com/en-in/azure/data-lake-analytics/data-lake-analytics-u-sql-catalog#create-views
