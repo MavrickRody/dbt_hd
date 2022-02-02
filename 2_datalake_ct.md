@@ -47,4 +47,13 @@ Access keys authenticate the applications requests to the storage account.
 ![image](https://user-images.githubusercontent.com/23280140/152242598-a1b2fbcf-1ec8-4caa-b671-6bfd2a246b3d.png)
 
 
+# Discover the Data through Azure Data Lake Analytics on Data Lake in Azure
+
+Step 1: We need to create a Azure Data Lake Analytics Account
+
+![image](https://user-images.githubusercontent.com/23280140/152243838-fc843e68-4c7f-4dd3-8c6c-5b08cec29cfa.png)
+
+Step 2: Creating an Azure Data Lake Database
+
+Step 3: Writing U-SQL Queries to Discover or Use Data in Azure Data Lake
 
