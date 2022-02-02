@@ -77,3 +77,5 @@ from "SNOWFLAKE"."ACCOUNT_USAGE"."COLUMNS" where column_name like '%Username%'
 ```
 
 
+
+### Note: The same apporach can be done with Databricks for Delta Lake. 
