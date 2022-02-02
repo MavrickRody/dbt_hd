@@ -172,29 +172,34 @@ reference below:
 https://hub.getdbt.com/dbt-labs/dbt_utils/0.1.7/
 
 
-# using SQL Helpers from dbtutil package
+# using Macros 
 
-SQL helpers
-
-```
-get_column_values (source)
-```
-
-This macro returns the unique values for a column in a given table.
-
-Usage:
-```
--- Returns a list of the top 50 states in the `users` table
-{% set states = dbt_utils.get_column_values(table=ref('users'), column='state', max_records=50) %}
-
-{% for state in states %}
-    ...
-{% endfor %}
+Create a file cents_to_dollars.sql in marcos directory
+and paste the code
 
 ```
+{% macro cents_to_dollars(column_name, precision=2) %}
+    ({{ column_name }} / 100)::numeric(16, {{ precision }})
+{% endmacro %}
+```
 
-Uasge below:
+create another file in models directory
 
+test_macro_col_values.sql
+and paste the code
+
+```
+select {{ cents_to_dollars('Cost') }} as CostA from {{ref('using_packaged_tests')}}
+```
+
+### This will create a new view in snowflake with just one column but we can add more.
+
+
+# Final Execution
+
+Try running the following commands:
+- dbt run
+- dbt test
 
 
 
