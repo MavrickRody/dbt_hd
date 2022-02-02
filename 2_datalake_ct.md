@@ -42,7 +42,9 @@ resource "azurerm_role_assignment" "example" {
 
 Access keys authenticate the applications requests to the storage account.
 
+# Workflow
 
+![image](https://user-images.githubusercontent.com/23280140/152242598-a1b2fbcf-1ec8-4caa-b671-6bfd2a246b3d.png)
 
 
 
